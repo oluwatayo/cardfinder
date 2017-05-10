@@ -1,0 +1,57 @@
+<html>
+<head>
+<title>{% block title %}{% endblock %}</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Agendo Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
+    
+    {% load staticfiles %}
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+<link href='http://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+<script src="{% static 'lostcard/js/jquery.min.js' %}"></script>
+<script src="{% static 'lostcard/js/bootstrap.min.js'%}"></script>
+<script src="{% static 'lostcard/js/bs-animation.js'%}"></script>
+<link rel="shortcut icon" type="image/png" href="{%  static 'favicon.ico' %}"/>
+<link rel="stylesheet" href="{% static 'lostcard/css/bootstrap.min.css' %}">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cookie">
+<link rel="stylesheet" href="{% static 'lostcard/fonts/font-awesome.min.css' %}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+<link rel="stylesheet" href="{% static 'lostcard/css/Navigation-with-Search1.css' %}">
+<link rel="stylesheet" href="{% static 'lostcard/css/Pretty-Footer.css' %}">
+<link rel="stylesheet" href="{% static 'lostcard/css/style.css' %}">       
+<link rel="stylesheet" href="{% static 'lostcard/css/Registration-Form-with-Photo.css' %}">  
+
+
+   
+</head>
+<body>
+
+
+    <div>
+        <nav class="navbar navbar-inverse navigation-clean-search">
+            <div class="container-fluid">
+                <div class="navbar-header"><a class="navbar-brand navbar-link" href="{% url 'lostcard:home' %}">Cardfinder</a>
+                    <button class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+                </div>
+                <div class="collapse navbar-collapse" id="navcol-1">
+                    <ul class="nav navbar-nav"></ul>
+                    <form class="navbar-form navbar-left" target="_self">
+                        <div class="form-group">
+                            <label class="control-label" for="search-field"><i class="glyphicon glyphicon-search"></i></label>
+                            <input class="form-control input-sm search-field" type="search" name="search" placeholder="Search with Name" id="search-field">
+                        </div>
+                    </form><a class="btn btn-default navbar-btn navbar-right action-button" role="button" href="{% url 'lostcard:about' %}">About</a></div>
+            </div>
+        </nav>
+    </div>
+        {% block body %}
+        {% endblock %}
+
+
+
+
+</body>
+</html>
+    

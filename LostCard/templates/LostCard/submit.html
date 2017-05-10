@@ -1,0 +1,39 @@
+{% extends 'lostcard/base1.html' %}
+{% block body %}
+{{ info }}
+    {{ not }}
+    <div class="modal fade" id="popupwindow1">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+
+                                        <!-- header -->
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                <h3 class="modal-title" style="color: green">Thanks For Using Cardfinder</h3>
+
+                                            </div>
+
+                                                    <div>
+                                                      <div class="modal-body">
+                                                          {% if info %}
+                                                              <em>{{ info }}</em>
+                                                          {% endif %}
+                                                      </div>
+                                                      <div class="modal-footer">
+
+                                                      </div>
+
+                                                    </div>
+                                </div>
+                            </div>
+                    </div>
+        {% if info %}
+       <script>
+	$(document).ready(function(){
+	  $("#popupwindow1").modal();
+
+	});
+	</script>
+       {% endif %}
+{% include 'lostcard/base_footer.html' %}
+{% endblock %}

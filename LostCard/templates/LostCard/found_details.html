@@ -1,0 +1,54 @@
+{% extends 'LostCard/base1.html' %}
+{% block title %}CardFinder || {{ cardfound.CardType }}'s Found{% endblock %}
+
+{% block body %}
+
+
+            {% load staticfiles %}
+            <div class="container">
+               <div class="row">
+               <div class="col-md-2">
+                   <img class="img img-responsive" src="{{ cardfound.card_img.url }}" style="margin-top: 30px">
+               </div>
+               <div class="col-md-10">
+                      <h1>{{ cardfound.CardType }}'s Found</h1>
+               {% if cardfound.specsfound_set.all %}
+                            <table class="table table-striped" border="2">
+                                        <thead>
+                                            <tr>
+                                                <th>S/N</th>
+                                                <th>Holder Name</th>
+                                                <th>Organisation/Instituition</th>
+                                                <th>Card ID</th>
+                                                <th>Email Address</th>
+                                                <th>Phone Number</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for cc in cardfound.specsfound_set.all %}
+                                                <tr>
+                                                <td>{{ forloop.counter }})</td>
+                                                <td>{{ cc.holder_name }}</td>
+                                                <td>{{ cc.Org_Name }}</td>
+                                                <td>{{ cc.id_card }}</td>
+                                                <td>{{ cc.email_add_founder }}</td>
+                                                <td>{{ cc.phone_no }}</td>
+                                                </tr>
+                                             {% endfor %}
+                                        </tbody>
+                            </table>
+                   {% else %}
+                  <script>
+                   sta = "No {{ cardfound.CardType }}'s Found Yet. Please check back later";
+                   alert(sta);
+                  </script>
+                   <marquee><h3>No Card's Here</h3></marquee>
+               {% endif %}
+                     </div>
+               </div>
+            </div>
+
+
+
+{% include 'lostcard/base_footer.html' %}
+{% endblock %}

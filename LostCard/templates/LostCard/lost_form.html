@@ -1,0 +1,42 @@
+{% extends 'lostcard/base1.html' %}
+{% block title %}CardFinder || Form{% endblock %}
+
+{% block body %}   
+
+        <div class="register-photo">
+        <div class="form-container">
+            <form method="post" role="form" action="{% url 'lostcard:lost_form_submit' %}">
+                {% csrf_token %}
+                <h2 class="text-center">Submit Details About Your Missing Card</h2>
+                <div class="form-group"></div>
+                <div class="form-group">
+                    <select class="form-control" name="cardtype" required="">
+                        <option value="" selected="">--select cardtype--</option>
+                        <option value="1" name="cd">Credit/Debit Card</option>
+                        <option value="2" name="iid">Instituition ID Card</option>
+                        <option value="3" name="oid">Organisation ID Card</option>
+                        <option value="4" name="others">Others</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="text" name="holdername" required="" placeholder="Name on Card">
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="text" name="organisation" required="" placeholder="Organisation/Instituition ">
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="text" name="id" required="" placeholder="Card-Number/ID/Matric-No">
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="email" name="email" required="" placeholder="Your Email">
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="tel" name="phone_number" required="" placeholder="Phone Number" maxlength="16" minlength="8">
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-info active btn-block btn-lg" type="submit">Submit Details</button>
+                </div><a href="{% url 'lostcard:found_index' %}" class="already">You can click here to see found Cards</a></form>
+        </div>
+    </div>
+    {% include 'lostcard/base_footer.html' %}
+{% endblock %}

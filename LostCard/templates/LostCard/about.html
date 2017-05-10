@@ -1,0 +1,18 @@
+{% extends 'lostcard/base1.html' %}
+{% block title %}CardFinder || About{% endblock %}
+{% block body %}
+
+   <div>
+        <div class="container">
+            <h1 class="text-center">About Cardfinder</h1>
+            <p class="abt"> Cardfinder is a simple and easy to use site that helps people find their missing cards. People who lose their cards will submit details about that card on this site, the site will automatically search the database for any related cards. If
+                a related card is found it prompts the user and information about the person who finds the card is displayed to the user. But if there are no related cards currently on the database, the site will keep checking for matches each time a
+                new found card is added and if any card matches your missing card, an email will be sent to you and the person who has the card and link the two of you together. Likewise if a person finds a missing card(probably in a cab, inside a wallet
+                or on the floor etc.) Such a person will submit details about the card on this site. The site then automatically checks the database in case there exists a matching card which has been reported missing.if one exists you will be shown details
+                about the owner of the card. But if there is no matching card, the site will keep checking for matches each time a new lost card is added and if any card matches your found card, an email will be sent to you and the poerson who lost the
+                card and link the two of you together. </p>
+        </div>
+    </div>
+{% include 'lostcard/base_footer.html' %}
+{% endblock %}
+{

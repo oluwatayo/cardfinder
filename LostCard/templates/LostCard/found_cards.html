@@ -1,0 +1,14 @@
+{% extends 'LostCard/base1.html' %}
+{% block title %}CardFinder || Card Group{% endblock %}
+{% block body %}
+        <div class="container">
+            <h3 class="text-center">What type of card do you want to view</h3>
+        <ul class="nav navbar-pills">
+             {% for card in all_cards_found %}
+             <li><a href="{% url 'lostcard:found_details' card.id %}">{{card.CardType}}'s</a> </li>
+             {% endfor %}
+        </ul>
+
+        </div>
+
+{% endblock %}

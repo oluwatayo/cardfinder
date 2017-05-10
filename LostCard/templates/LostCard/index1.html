@@ -1,0 +1,77 @@
+
+{% extends 'LostCard/base1.html' %}
+{% block title %}CardFinder || Home{% endblock %}
+   {% block body %}
+
+	<div class="about" id="about">
+		<div class="container">
+			<div class="about-top">
+				</br>
+				<h3><span>CardFinder Helps you track your missing cards. Just Submit the details of the card</span></h3>
+			</div>
+			<div class="about-bottom">
+				<div class="col-md-4 about-left">
+					<a href="{% url 'lostcard:lost_form' %}"><i class="glyphicon glyphicon-hand-up"></i></a>
+					<h4>Lost A Card</h4>
+					<p>Please Click <a class="btn btn-info link" role="button" href="{% url 'lostcard:lost_form' %}">Here </a> if You Lost a Card. You will Be Required to Submit details about your missing card. The Card could be an ID Card, Atm Card(Credit/Debit Card).etc </p>
+				</div>
+				<div class="col-md-4 about-left">
+					<a href="{% url 'lostcard:found_form' %}"><i class="glyphicon glyphicon-check"> </i></a>
+					<h4>Found a Card</h4>
+					<p>Please Click <a class="btn btn-info link" role="button" href="{% url 'lostcard:found_form' %}">Here </a> if You found a Card. You will Be Required to Submit details about this card. The Card could be an ID Card, Atm Card(Credit/Debit Card).etc. </p>
+				</div>
+				<div class="col-md-4 about-left">
+					<a href="{% url 'lostcard:found_index' %}"><i class="glyphicon glyphicon-floppy-disk"> </i></a>
+					<h4>See Found Cards</h4>
+					<p>Please Click <a class="btn btn-info link" role="button" href="{% url 'lostcard:found_index' %}">Here </a> if You wish to see the list and details of cards which have been found by the users of this site. If you find a familiar card, please
+                            click to contact the user who holds the card. </p>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+		</div>
+		</div>       
+ <div class="modal fade" id="popupwindow1">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+
+                                        <!-- header -->
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                <h3 class="modal-title" style="color: green">
+                                                    {% if info %}Thanks For Using Cardfinder
+                                                    {% elif mail_sent %} Mail Sent
+                                                    {% endif %}
+                                                </h3>
+
+                                            </div>
+
+                                                    <div>
+                                                      <div class="modal-body">
+                                                          <div style="font-family: 'Tempus Sans ITC' ; color: yellow">
+                                                              {{ info }}
+                                                              {{ mail_sent }}
+                                                          </div>
+                                                      </div>
+                                                      <div class="modal-footer">
+
+                                                      </div>
+
+                                                    </div>
+                                </div>
+                            </div>
+                    </div>
+        {% if info or mail_sent %}
+       <script>
+	$(document).ready(function(){
+	  $("#popupwindow1").modal();
+
+	});
+	</script>
+       {% endif %}
+{% include 'lostcard/base_footer.html' %}
+{% endblock %}
+
+
+
+
+
