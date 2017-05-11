@@ -5,7 +5,7 @@ from .models import Card, CardFound
 from django.core.mail import send_mass_mail, BadHeaderError, send_mail
 from django.http import HttpResponse, HttpResponseRedirect
 from . import messages
-###############
+################
 def home(request):
     return render(request, 'lostcard/index1.html')
 
