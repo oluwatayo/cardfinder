@@ -1,3 +1,4 @@
+# automated mail messages
 def message_perfect_owner():
     message = "Hey!! Your missing card has been found. Please kindly" \
               " contact the finder using the email or phone number below. "
