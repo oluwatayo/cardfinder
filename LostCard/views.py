@@ -87,7 +87,7 @@ def found_form_submit(request):
                                try:
                                    message = messages.message_perfect_owner()
                                    message += "\n" + card_spec1.email_add_founder + "\n" + card_spec1.phone_no
-                                   message1 = messages.message_not_perfect_finder()
+                                   message1 = messages.message_perfect_finder()
                                    message1 += "\n" + cd.email_add + "\n" + cd.phone_no
                                    datatuple = (
                                        ("About your Missing Card", message ,
@@ -136,7 +136,7 @@ def found_form_submit(request):
                                try:
                                    message = messages.no_match_found()
                                    send_mail(
-                                       'Subject',
+                                       'CardFinder',
                                         message,
                                        'cardfinder01@gmail.com',
                                        [card_spec1.email_add_founder],
@@ -149,7 +149,7 @@ def found_form_submit(request):
                         try:
                             message_out = messages.no_match_found()
                             send_mail(
-                                'Subject',
+                                'CardFinder',
                                 message_out,
                                 'cardfinder01@gmail.com',
                                 [card_spec1.email_add_founder],
@@ -183,9 +183,9 @@ def lost_form_submit(request):
                                     and i.id_card.lower() == card_spec1.id_card.lower():
                                 try:
                                     message = messages.message_perfect_lost_finder()
-                                    message += "\n" + card_spec1.email_add_founder + "\n" + card_spec1.phone_no
+                                    message += "\n" + card_spec1.email_add + "\n" + card_spec1.phone_no
                                     message1 = messages.message_perfect_lost_owner()
-                                    message1 += "\n" + i.email_add + "\n" + i.phone_no
+                                    message1 += "\n" + i.email_add_founder + "\n" + i.phone_no
                                     datatuple = (
                                         ("About your Missing Card", message1,
                                          'cardfinder01@gmail.com', [card_spec1.email_add]),
@@ -201,9 +201,9 @@ def lost_form_submit(request):
                                  (i.holder_name.lower() == card_spec1.holder_name.lower() and i.id_card.lower() == card_spec1.id_card.lower()) :
                                 try:
                                     message = messages.message_not_perfect_lost_finder()
-                                    message += "\n" + card_spec1.email_add_founder + "\n" + card_spec1.phone_no
+                                    message += "\n" + card_spec1.email_add + "\n" + card_spec1.phone_no
                                     message1 = messages.message_not_perfect_lost_owner()
-                                    message1 += "\n" + i.email_add + "\n" + i.phone_no
+                                    message1 += "\n" + i.email_add_founder + "\n" + i.phone_no
                                     datatuple = (
                                         ("About your Missing Card", message1,
                                          'cardfinder01@gmail.com', [card_spec1.email_add]),
@@ -218,10 +218,10 @@ def lost_form_submit(request):
                                 try:
                                     message = messages.no_match_lost()
                                     send_mail(
-                                        'Subject',
+                                        'CardFinder',
                                         message,
                                         'cardfinder01@gmail.com',
-                                        [card_spec1.email_add_founder],
+                                        [card_spec1.email_add],
                                     )
 
                                 except BadHeaderError:
@@ -231,10 +231,10 @@ def lost_form_submit(request):
                         try:
                             message_out = messages.no_match_lost()
                             send_mail(
-                                'Subject',
+                                'CardFinder',
                                 message_out,
                                 'cardfinder01@gmail.com',
-                                [card_spec1.email_add_founder],
+                                [card_spec1.email_add],
                             )
 
                         except BadHeaderError:

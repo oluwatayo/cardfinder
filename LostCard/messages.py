@@ -29,7 +29,7 @@ def no_match_found():
     return message
 
 def message_perfect_lost_owner():
-    message = "Hey!! Your missing card has been found Please contact the finder via the mail or phone number below"
+    message = "Hey!! Your missing card has been found Please contact the finder via the mail or phone number below "
     return message
 
 def message_perfect_lost_finder():
@@ -43,10 +43,10 @@ def message_not_perfect_lost_owner():
     return message
 def message_not_perfect_lost_finder():
     message = "Hey!! It seems like the card you found has been reported missing ." \
-              "Please contact the owner of the card via the email or phone number below"
+              "Please contact the owner of the card via the email or phone number below "
     return message
 
 def no_match_lost():
-    message = "Hey!! Your Missing card has not been found yet. Anyways don't worry we'll keep checking for maches" \
+    message = "Hey!! Your Missing card has not been found yet. Anyways don't worry we'll keep checking for matches " \
               "and we'll  let you know when your card is found"
     return message
