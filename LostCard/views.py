@@ -7,16 +7,16 @@ from django.http import HttpResponse, HttpResponseRedirect
 from . import messages
 
 def home(request):
-    return render(request, 'lostcard/index1.html')
+    return render(request, 'LostCard/index1.html')
 
 def lost_form(request):
-    return render(request, 'lostcard/lost_form.html')
+    return render(request, 'LostCard/lost_form.html')
 
 def found_form(request):
-    return render(request, 'lostcard/found_form.html')
+    return render(request, 'LostCard/found_form.html')
 
 def about(request):
-    return render(request, 'lostcard/about.html')
+    return render(request, 'LostCard/about.html')
 
 class LostIndexView(generic.ListView):
     template_name = 'LostCard/lost_cards.html'
@@ -60,7 +60,7 @@ def mail(request):
             send_mass_mail(datatuple)
         except BadHeaderError:
                return HttpResponse('Invalid header found OR Mail Server Down. Please try again')
-        return render(request, 'lostcard/index1.html', context)
+        return render(request, 'LostCard/index1.html', context)
 
 def found_form_submit(request):
     #submitting details for a found card by a finder
@@ -98,7 +98,7 @@ def found_form_submit(request):
                                    send_mass_mail(datatuple)
                                except BadHeaderError:
                                    return HttpResponse('Invalid header found OR Mail Server Down. Please try again')
-                               return render(request, 'lostcard/index1.html',{'info':message1})
+                               return render(request, 'LostCard/index1.html',{'info':message1})
                            elif cd.holder_name.lower() == card_spec1.holder_name.lower() \
                                    and cd.Org_Name.lower() == card_spec1.Org_Name.lower():
                                try:
@@ -115,7 +115,7 @@ def found_form_submit(request):
                                    send_mass_mail(datatuple)
                                except BadHeaderError:
                                    return HttpResponse('Invalid header found OR Mail Server Down. Please try again')
-                               return render(request, 'lostcard/index1.html',{'info':message1})
+                               return render(request, 'LostCard/index1.html',{'info':message1})
                            elif cd.holder_name.lower() == card_spec1.holder_name.lower() and cd.id_card.lower() == card_spec1.id_card.lower():
                                try:
                                    message = messages.message_not_perfect_owner()
@@ -131,7 +131,7 @@ def found_form_submit(request):
                                    send_mass_mail(datatuple)
                                except BadHeaderError:
                                    return HttpResponse('Invalid header found OR Mail Server Down. Please try again')
-                               return render(request, 'lostcard/index1.html',{'info': message1})
+                               return render(request, 'LostCard/index1.html',{'info': message1})
                            else:
                                try:
                                    message = messages.no_match_found()
@@ -144,7 +144,7 @@ def found_form_submit(request):
 
                                except BadHeaderError:
                                    return HttpResponse('Invalid header found OR Mail Server Down. Please try again')
-                               return render(request, 'lostcard/index1.html',{'info':message})
+                               return render(request, 'LostCard/index1.html',{'info':message})
                     else:
                         try:
                             message_out = messages.no_match_found()
@@ -157,7 +157,7 @@ def found_form_submit(request):
 
                         except BadHeaderError:
                             return HttpResponse('Invalid header found OR Mail Server Down. Please try again')
-                        return render(request, 'lostcard/index1.html', {'info': message_out})
+                        return render(request, 'LostCard/index1.html', {'info': message_out})
 
 
 def lost_form_submit(request):
@@ -195,7 +195,7 @@ def lost_form_submit(request):
                                     send_mass_mail(datatuple)
                                 except BadHeaderError:
                                     return HttpResponse('Invalid header found OR Mail Server Down. Please try again')
-                                return render(request, 'lostcard/index1.html', {'info': message1})
+                                return render(request, 'LostCard/index1.html', {'info': message1})
                             elif (i.holder_name.lower() == card_spec1.holder_name.lower() \
                                     and i.Org_Name.lower() == card_spec1.Org_Name.lower()) or \
                                  (i.holder_name.lower() == card_spec1.holder_name.lower() and i.id_card.lower() == card_spec1.id_card.lower()) :
@@ -213,7 +213,7 @@ def lost_form_submit(request):
                                     send_mass_mail(datatuple)
                                 except BadHeaderError:
                                     return HttpResponse('Invalid header found OR Mail Server Down. Please try again')
-                                return render(request, 'lostcard/index1.html', {'info': message1})
+                                return render(request, 'LostCard/index1.html', {'info': message1})
                             else:
                                 try:
                                     message = messages.no_match_lost()
@@ -226,7 +226,7 @@ def lost_form_submit(request):
 
                                 except BadHeaderError:
                                     return HttpResponse('Invalid header found OR Mail Server Down. Please try again')
-                                return render(request, 'lostcard/index1.html', {'info': message})
+                                return render(request, 'LostCard/index1.html', {'info': message})
                     else:
                         try:
                             message_out = messages.no_match_lost()
@@ -239,15 +239,7 @@ def lost_form_submit(request):
 
                         except BadHeaderError:
                             return HttpResponse('Invalid header found OR Mail Server Down. Please try again')
-                        return render(request, 'lostcard/index1.html', {'info': message_out})
+                        return render(request, 'LostCard/index1.html', {'info': message_out})
 
-                return render(request, 'lostcard/index1.html')
+                return render(request, 'LostCard/index1.html')
        # return render(request, 'lostcard/index1.html', {'context':card_value})
-
-
-
-
-
-
-
-
