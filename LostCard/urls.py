@@ -9,6 +9,8 @@ urlpatterns = [
 
     url(r'^send/mail/', views.mail, name='mail'),
 
+    url(r'^search/result', views.search, name='search'),
+    
     url(r'^about', views.about, name='about'),
 
     url(r'^lost/form/submit', views.lost_form_submit, name='lost_form_submit'),

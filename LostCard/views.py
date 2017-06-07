@@ -1,7 +1,8 @@
 from django.views import generic
 from django.shortcuts import render
 from django.views.generic.edit import CreateView, UpdateView,DeleteView
-from .models import Card, CardFound
+from .models import Card, CardFound ,SpecsFound
+from django.db.models import Q
 from django.core.mail import send_mass_mail, BadHeaderError, send_mail
 from django.http import HttpResponse, HttpResponseRedirect
 from . import messages
@@ -132,32 +133,32 @@ def found_form_submit(request):
                                except BadHeaderError:
                                    return HttpResponse('Invalid header found OR Mail Server Down. Please try again')
                                return render(request, 'LostCard/index1.html',{'info': message1})
-                           else:
-                               try:
-                                   message = messages.no_match_found()
-                                   send_mail(
-                                       'CardFinder',
-                                        message,
-                                       'cardfinder01@gmail.com',
-                                       [card_spec1.email_add_founder],
-                                   )
+                       else:
+                           try:
+                               message = messages.no_match_found()
+                               send_mail(
+                                   'CardFinder',
+                                    message,
+                                   'cardfinder01@gmail.com',
+                                   [card_spec1.email_add_founder],
+                               )
 
-                               except BadHeaderError:
-                                   return HttpResponse('Invalid header found OR Mail Server Down. Please try again')
-                               return render(request, 'LostCard/index1.html',{'info':message})
-                    else:
-                        try:
-                            message_out = messages.no_match_found()
-                            send_mail(
-                                'CardFinder',
-                                message_out,
-                                'cardfinder01@gmail.com',
-                                [card_spec1.email_add_founder],
-                            )
+                           except BadHeaderError:
+                               return HttpResponse('Invalid header found OR Mail Server Down. Please try again')
+                           return render(request, 'LostCard/index1.html',{'info':message})
+                else:
+                    try:
+                        message_out = messages.no_match_found()
+                        send_mail(
+                            'CardFinder',
+                            message_out,
+                            'cardfinder01@gmail.com',
+                            [card_spec1.email_add_founder],
+                        )
 
-                        except BadHeaderError:
-                            return HttpResponse('Invalid header found OR Mail Server Down. Please try again')
-                        return render(request, 'LostCard/index1.html', {'info': message_out})
+                    except BadHeaderError:
+                        return HttpResponse('Invalid header found OR Mail Server Down. Please try again')
+                    return render(request, 'LostCard/index1.html', {'info': message_out})
 
 
 def lost_form_submit(request):
@@ -214,35 +215,45 @@ def lost_form_submit(request):
                                 except BadHeaderError:
                                     return HttpResponse('Invalid header found OR Mail Server Down. Please try again')
                                 return render(request, 'LostCard/index1.html', {'info': message1})
-                            else:
-                                try:
-                                    message = messages.no_match_lost()
-                                    send_mail(
-                                        'CardFinder',
-                                        message,
-                                        'cardfinder01@gmail.com',
-                                        [card_spec1.email_add],
-                                    )
+                        else:
+                            try:
+                                message = messages.no_match_lost()
+                                send_mail(
+                                    'CardFinder',
+                                    message,
+                                    'cardfinder01@gmail.com',
+                                    [card_spec1.email_add],
+                                )
 
-                                except BadHeaderError:
-                                    return HttpResponse('Invalid header found OR Mail Server Down. Please try again')
-                                return render(request, 'LostCard/index1.html', {'info': message})
-                    else:
-                        try:
-                            message_out = messages.no_match_lost()
-                            send_mail(
-                                'CardFinder',
-                                message_out,
-                                'cardfinder01@gmail.com',
-                                [card_spec1.email_add],
-                            )
+                            except BadHeaderError:
+                                return HttpResponse('Invalid header found OR Mail Server Down. Please try again')
+                            return render(request, 'LostCard/index1.html', {'info': message})
+                else:
+                    try:
+                        message_out = messages.no_match_lost()
+                        send_mail(
+                            'CardFinder',
+                            message_out,
+                            'cardfinder01@gmail.com',
+                            [card_spec1.email_add],
+                        )
 
-                        except BadHeaderError:
-                            return HttpResponse('Invalid header found OR Mail Server Down. Please try again')
-                        return render(request, 'LostCard/index1.html', {'info': message_out})
-
-                return render(request, 'LostCard/index1.html')
+                    except BadHeaderError:
+                        return HttpResponse('Invalid header found OR Mail Server Down. Please try again')
+                    return render(request, 'LostCard/index1.html', {'info': message_out})
        # return render(request, 'lostcard/index1.html', {'context':card_value})
+
+def search(request):
+    query = request.GET.get("q")
+    result = SpecsFound.objects.all()
+    if query:
+        result = result.filter(
+            Q(holder_name__icontains=query)
+        ).distinct()
+        return render(request, 'LostCard/search.html', {
+            'card_result': result,
+            'name':query
+        })
 
 
 

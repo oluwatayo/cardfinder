@@ -1,0 +1,40 @@
+{% extends 'LostCard/base1.html' %}
+{% block body %}
+    {% if card_result %}
+        <h1 style="text-align: center">Card's Found Matching your search</h1>
+             <table class="table table-striped" border="2">
+                                        <thead>
+                                            <tr>
+                                                <th>S/N</th>
+                                                <th>Holder Name</th>
+                                                <th>Organisation/Instituition</th>
+                                                <th>Card ID</th>
+                                                <th>Founder's Email Address</th>
+                                                <th>Founder's Phone Number</th>
+                                                <th>Type of Card</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                             {% for re in card_result %}
+                                                <tr>
+                                                <td>{{ forloop.counter }})</td>
+                                                <td>{{ re.holder_name }}</td>
+                                                <td>{{ re.Org_Name }}</td>
+                                                <td>{{ re.id_card }}</td>
+                                                <td>{{ re.email_add_founder }}</td>
+                                                <td>{{ re.phone_no }}</td>
+                                                <td>{{re.card2 }}</td>
+                                                </tr>
+                                             {% endfor %}
+                                        </tbody>
+                            </table>
+        {% else %}
+        <script language="JavaScript" type="text/javascript">
+        alert("Sorry {{ name }}, Your Card has not been found")
+        window.setTimeout('window.open("{% url 'lostcard:home' %}")',0)
+        window.setTimeout('window.close();',0)
+        </script>
+    {% endif %}
+
+{% include 'LostCard/base_footer.html' %}
+{% endblock %}

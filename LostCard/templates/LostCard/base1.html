@@ -36,10 +36,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 </div>
                 <div class="collapse navbar-collapse" id="navcol-1">
                     <ul class="nav navbar-nav"></ul>
-                    <form class="navbar-form navbar-left" target="_self">
+                    <form class="navbar-form navbar-left" method="get" action="{% url 'lostcard:search' %}">
                         <div class="form-group">
                             <label class="control-label" for="search-field"><i class="glyphicon glyphicon-search"></i></label>
-                            <input class="form-control input-sm search-field" type="search" name="search" placeholder="Search with Name" id="search-field">
+                            <input class="form-control input-sm search-field" type="search" name="q" placeholder="Search with Name" value="{{ request.GET.q }}" id="search-field">
                         </div>
                     </form><a class="btn btn-default navbar-btn navbar-right action-button" role="button" href="{% url 'lostcard:about' %}">About</a></div>
             </div>
