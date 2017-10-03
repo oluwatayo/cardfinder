@@ -7,8 +7,6 @@ from django.core.mail import send_mass_mail, BadHeaderError, send_mail
 from django.http import HttpResponse, HttpResponseRedirect
 from . import messages
 ##################
-def home(request):
-    return render(request, 'LostCard/index1.html')
 
 def lost_form(request):
     return render(request, 'LostCard/lost_form.html')
